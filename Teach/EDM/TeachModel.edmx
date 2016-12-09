@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TeachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CenterData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblAbsence">
+          <Key>
+            <PropertyRef Name="idStudent" />
+            <PropertyRef Name="date" />
+          </Key>
+          <Property Name="idStudent" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="day1" Type="bit" />
+          <Property Name="day2" Type="bit" />
+          <Property Name="day3" Type="bit" />
+          <Property Name="day4" Type="bit" />
+          <Property Name="day5" Type="bit" />
+          <Property Name="day6" Type="bit" />
+          <Property Name="day7" Type="bit" />
+          <Property Name="day8" Type="bit" />
+          <Property Name="day9" Type="bit" />
+          <Property Name="day10" Type="bit" />
+          <Property Name="day11" Type="bit" />
+          <Property Name="day12" Type="bit" />
+          <Property Name="day13" Type="bit" />
+          <Property Name="day14" Type="bit" />
+          <Property Name="paid" Type="bit" />
+          <Property Name="exam" Type="float" />
+        </EntityType>
+        <EntityType Name="tblClass">
+          <Key>
+            <PropertyRef Name="idClass" />
+          </Key>
+          <Property Name="idStage" Type="int" Nullable="false" />
+          <Property Name="idClass" Type="int" Nullable="false" />
+          <Property Name="nameClass" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblGroup">
+          <Key>
+            <PropertyRef Name="idGroup" />
+          </Key>
+          <Property Name="idClass" Type="int" />
+          <Property Name="idGroup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="maxNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="tblRelation">
+          <Key>
+            <PropertyRef Name="idRelation" />
+          </Key>
+          <Property Name="idRelation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idGroup" Type="int" />
+          <Property Name="Day" Type="nvarchar" MaxLength="50" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStage">
+          <Key>
+            <PropertyRef Name="idStage" />
+          </Key>
+          <Property Name="idStage" Type="int" Nullable="false" />
+          <Property Name="nameStage" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="idStudent" />
+          </Key>
+          <Property Name="idGroup" Type="int" />
+          <Property Name="idStudent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameStudent" Type="nvarchar" MaxLength="50" />
+          <Property Name="addressStudent" Type="nvarchar" MaxLength="50" />
+          <Property Name="schoolStudent" Type="nvarchar" MaxLength="50" />
+          <Property Name="numberParent" Type="nvarchar" MaxLength="50" />
+          <Property Name="notes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="numInLog" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tblAbsence_tblStudent">
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblAbsence" Type="Self.tblAbsence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudent">
+              <PropertyRef Name="idStudent" />
+            </Principal>
+            <Dependent Role="tblAbsence">
+              <PropertyRef Name="idStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblClass_tblStage">
+          <End Role="tblStage" Type="Self.tblStage" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStage">
+              <PropertyRef Name="idStage" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="idStage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblGroup_tblClass">
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblGroup" Type="Self.tblGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClass">
+              <PropertyRef Name="idClass" />
+            </Principal>
+            <Dependent Role="tblGroup">
+              <PropertyRef Name="idClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblRelation_tblGroup">
+          <End Role="tblGroup" Type="Self.tblGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblRelation" Type="Self.tblRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGroup">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="tblRelation">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudent_tblGroup">
+          <End Role="tblGroup" Type="Self.tblGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblStudent" Type="Self.tblStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGroup">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="tblStudent">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeachModelStoreContainer">
+          <EntitySet Name="CenterData" EntityType="Self.CenterData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAbsence" EntityType="Self.tblAbsence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblClass" EntityType="Self.tblClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGroup" EntityType="Self.tblGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRelation" EntityType="Self.tblRelation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStage" EntityType="Self.tblStage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudent" EntityType="Self.tblStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblAbsence_tblStudent" Association="Self.FK_tblAbsence_tblStudent">
+            <End Role="tblStudent" EntitySet="tblStudent" />
+            <End Role="tblAbsence" EntitySet="tblAbsence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblClass_tblStage" Association="Self.FK_tblClass_tblStage">
+            <End Role="tblStage" EntitySet="tblStage" />
+            <End Role="tblClass" EntitySet="tblClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblGroup_tblClass" Association="Self.FK_tblGroup_tblClass">
+            <End Role="tblClass" EntitySet="tblClass" />
+            <End Role="tblGroup" EntitySet="tblGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblRelation_tblGroup" Association="Self.FK_tblRelation_tblGroup">
+            <End Role="tblGroup" EntitySet="tblGroup" />
+            <End Role="tblRelation" EntitySet="tblRelation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudent_tblGroup" Association="Self.FK_tblStudent_tblGroup">
+            <End Role="tblGroup" EntitySet="tblGroup" />
+            <End Role="tblStudent" EntitySet="tblStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblClass">
+          <Key>
+            <PropertyRef Name="idClass" />
+          </Key>
+          <Property Name="idStage" Type="Int32" Nullable="false" />
+          <Property Name="idClass" Type="Int32" Nullable="false" />
+          <Property Name="nameClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblStage" Relationship="Self.FK_tblClass_tblStage" FromRole="tblClass" ToRole="tblStage" />
+          <NavigationProperty Name="tblGroups" Relationship="TeachModel.FK_tblGroup_tblClass" FromRole="tblClass" ToRole="tblGroup" />
+        </EntityType>
+        <EntityType Name="tblStage">
+          <Key>
+            <PropertyRef Name="idStage" />
+          </Key>
+          <Property Name="idStage" Type="Int32" Nullable="false" />
+          <Property Name="nameStage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblClasses" Relationship="Self.FK_tblClass_tblStage" FromRole="tblStage" ToRole="tblClass" />
+        </EntityType>
+        <Association Name="FK_tblClass_tblStage">
+          <End Role="tblStage" Type="Self.tblStage" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStage">
+              <PropertyRef Name="idStage" />
+            </Principal>
+            <Dependent Role="tblClass">
+              <PropertyRef Name="idStage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeachEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblClasses" EntityType="Self.tblClass" />
+          <EntitySet Name="tblStages" EntityType="Self.tblStage" />
+          <AssociationSet Name="FK_tblClass_tblStage" Association="Self.FK_tblClass_tblStage">
+            <End Role="tblStage" EntitySet="tblStages" />
+            <End Role="tblClass" EntitySet="tblClasses" />
+          </AssociationSet>
+          <EntitySet Name="tblGroups" EntityType="TeachModel.tblGroup" />
+          <AssociationSet Name="FK_tblGroup_tblClass" Association="TeachModel.FK_tblGroup_tblClass">
+            <End Role="tblClass" EntitySet="tblClasses" />
+            <End Role="tblGroup" EntitySet="tblGroups" />
+          </AssociationSet>
+          <EntitySet Name="tblAbsences" EntityType="TeachModel.tblAbsence" />
+          <EntitySet Name="tblRelations" EntityType="TeachModel.tblRelation" />
+          <AssociationSet Name="FK_tblRelation_tblGroup" Association="TeachModel.FK_tblRelation_tblGroup">
+            <End Role="tblGroup" EntitySet="tblGroups" />
+            <End Role="tblRelation" EntitySet="tblRelations" />
+          </AssociationSet>
+          <EntitySet Name="tblUsers" EntityType="TeachModel.tblUser" />
+          <EntitySet Name="CenterDatas" EntityType="TeachModel.CenterData" />
+          <EntitySet Name="tblStudents" EntityType="TeachModel.tblStudent" />
+          <AssociationSet Name="FK_tblAbsence_tblStudent" Association="TeachModel.FK_tblAbsence_tblStudent">
+            <End Role="tblStudent" EntitySet="tblStudents" />
+            <End Role="tblAbsence" EntitySet="tblAbsences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudent_tblGroup" Association="TeachModel.FK_tblStudent_tblGroup">
+            <End Role="tblGroup" EntitySet="tblGroups" />
+            <End Role="tblStudent" EntitySet="tblStudents" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="tblGroup">
+          <Key>
+            <PropertyRef Name="idGroup" />
+          </Key>
+          <Property Name="idClass" Type="Int32" />
+          <Property Name="idGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="maxNumber" Type="Int32" />
+          <NavigationProperty Name="tblClass" Relationship="TeachModel.FK_tblGroup_tblClass" FromRole="tblGroup" ToRole="tblClass" />
+          <NavigationProperty Name="tblRelations" Relationship="TeachModel.FK_tblRelation_tblGroup" FromRole="tblGroup" ToRole="tblRelation" />
+          <NavigationProperty Name="tblStudents" Relationship="TeachModel.FK_tblStudent_tblGroup" FromRole="tblGroup" ToRole="tblStudent" />
+        </EntityType>
+        <Association Name="FK_tblGroup_tblClass">
+          <End Type="TeachModel.tblClass" Role="tblClass" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TeachModel.tblGroup" Role="tblGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblClass">
+              <PropertyRef Name="idClass" />
+            </Principal>
+            <Dependent Role="tblGroup">
+              <PropertyRef Name="idClass" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblAbsence">
+          <Key>
+            <PropertyRef Name="idStudent" />
+            <PropertyRef Name="date" />
+          </Key>
+          <Property Name="idStudent" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="day1" Type="Boolean" />
+          <Property Name="day2" Type="Boolean" />
+          <Property Name="day3" Type="Boolean" />
+          <Property Name="day4" Type="Boolean" />
+          <Property Name="day5" Type="Boolean" />
+          <Property Name="day6" Type="Boolean" />
+          <Property Name="day7" Type="Boolean" />
+          <Property Name="day8" Type="Boolean" />
+          <Property Name="day9" Type="Boolean" />
+          <Property Name="day10" Type="Boolean" />
+          <Property Name="day11" Type="Boolean" />
+          <Property Name="day12" Type="Boolean" />
+          <Property Name="paid" Type="Boolean" />
+          <Property Name="exam" Type="Double" />
+          <Property Name="day13" Type="Boolean" />
+          <Property Name="day14" Type="Boolean" />
+          <NavigationProperty Name="tblStudent" Relationship="TeachModel.FK_tblAbsence_tblStudent" FromRole="tblAbsence" ToRole="tblStudent" />
+        </EntityType>
+        <EntityType Name="tblRelation">
+          <Key>
+            <PropertyRef Name="idRelation" />
+          </Key>
+          <Property Name="idRelation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idGroup" Type="Int32" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblGroup" Relationship="TeachModel.FK_tblRelation_tblGroup" FromRole="tblRelation" ToRole="tblGroup" />
+        </EntityType>
+        <Association Name="FK_tblRelation_tblGroup">
+          <End Type="TeachModel.tblGroup" Role="tblGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TeachModel.tblRelation" Role="tblRelation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGroup">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="tblRelation">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CenterData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblStudent">
+          <Key>
+            <PropertyRef Name="idStudent" />
+          </Key>
+          <Property Name="idGroup" Type="Int32" />
+          <Property Name="idStudent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="addressStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="schoolStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numberParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="numInLog" Type="Int32" />
+          <NavigationProperty Name="tblAbsences" Relationship="TeachModel.FK_tblAbsence_tblStudent" FromRole="tblStudent" ToRole="tblAbsence" />
+          <NavigationProperty Name="tblGroup" Relationship="TeachModel.FK_tblStudent_tblGroup" FromRole="tblStudent" ToRole="tblGroup" />
+        </EntityType>
+        <Association Name="FK_tblAbsence_tblStudent">
+          <End Type="TeachModel.tblStudent" Role="tblStudent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TeachModel.tblAbsence" Role="tblAbsence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudent">
+              <PropertyRef Name="idStudent" />
+            </Principal>
+            <Dependent Role="tblAbsence">
+              <PropertyRef Name="idStudent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudent_tblGroup">
+          <End Type="TeachModel.tblGroup" Role="tblGroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="TeachModel.tblStudent" Role="tblStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblGroup">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="tblStudent">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeachModelStoreContainer" CdmEntityContainer="TeachEntities">
+          <EntitySetMapping Name="tblClasses">
+            <EntityTypeMapping TypeName="TeachModel.tblClass">
+              <MappingFragment StoreEntitySet="tblClass">
+                <ScalarProperty Name="idStage" ColumnName="idStage" />
+                <ScalarProperty Name="idClass" ColumnName="idClass" />
+                <ScalarProperty Name="nameClass" ColumnName="nameClass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStages">
+            <EntityTypeMapping TypeName="TeachModel.tblStage">
+              <MappingFragment StoreEntitySet="tblStage">
+                <ScalarProperty Name="idStage" ColumnName="idStage" />
+                <ScalarProperty Name="nameStage" ColumnName="nameStage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGroups">
+            <EntityTypeMapping TypeName="TeachModel.tblGroup">
+              <MappingFragment StoreEntitySet="tblGroup">
+                <ScalarProperty Name="maxNumber" ColumnName="maxNumber" />
+                <ScalarProperty Name="nameGroup" ColumnName="nameGroup" />
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="idClass" ColumnName="idClass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAbsences">
+            <EntityTypeMapping TypeName="TeachModel.tblAbsence">
+              <MappingFragment StoreEntitySet="tblAbsence">
+                <ScalarProperty Name="day14" ColumnName="day14" />
+                <ScalarProperty Name="day13" ColumnName="day13" />
+                <ScalarProperty Name="exam" ColumnName="exam" />
+                <ScalarProperty Name="paid" ColumnName="paid" />
+                <ScalarProperty Name="day12" ColumnName="day12" />
+                <ScalarProperty Name="day11" ColumnName="day11" />
+                <ScalarProperty Name="day10" ColumnName="day10" />
+                <ScalarProperty Name="day9" ColumnName="day9" />
+                <ScalarProperty Name="day8" ColumnName="day8" />
+                <ScalarProperty Name="day7" ColumnName="day7" />
+                <ScalarProperty Name="day6" ColumnName="day6" />
+                <ScalarProperty Name="day5" ColumnName="day5" />
+                <ScalarProperty Name="day4" ColumnName="day4" />
+                <ScalarProperty Name="day3" ColumnName="day3" />
+                <ScalarProperty Name="day2" ColumnName="day2" />
+                <ScalarProperty Name="day1" ColumnName="day1" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRelations">
+            <EntityTypeMapping TypeName="TeachModel.tblRelation">
+              <MappingFragment StoreEntitySet="tblRelation">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="idRelation" ColumnName="idRelation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="TeachModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CenterDatas">
+            <EntityTypeMapping TypeName="TeachModel.CenterData">
+              <MappingFragment StoreEntitySet="CenterData">
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudents">
+            <EntityTypeMapping TypeName="TeachModel.tblStudent">
+              <MappingFragment StoreEntitySet="tblStudent">
+                <ScalarProperty Name="numInLog" ColumnName="numInLog" />
+                <ScalarProperty Name="notes" ColumnName="notes" />
+                <ScalarProperty Name="numberParent" ColumnName="numberParent" />
+                <ScalarProperty Name="schoolStudent" ColumnName="schoolStudent" />
+                <ScalarProperty Name="addressStudent" ColumnName="addressStudent" />
+                <ScalarProperty Name="nameStudent" ColumnName="nameStudent" />
+                <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
