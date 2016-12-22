@@ -35,35 +35,6 @@ namespace Teach.PL
         }
         void fillCharts()
         {
-            DateTime dt = DateTime.Now.Date;
-            DateTime dtLast = dt.AddMonths(-1);
-            int thisYear = dt.Year, lastYear = dtLast.Year, thisMonth = dt.Month, lastMonth = dtLast.Month;
-
-            var paidThisMonth = (from x in db.tblAbsences
-                                 where x.date.Year == thisYear && x.date.Month == thisMonth && x.paid == true
-                                 select x).ToList();
-            var notPaidThisMonth = (from x in db.tblAbsences
-                                    where x.date.Year == thisYear && x.date.Month == thisMonth && x.paid == false
-                                    select x).ToList();
-
-            var paidLastMonth = (from x in db.tblAbsences
-                                 where x.date.Year == lastYear && x.date.Month == lastMonth && x.paid == true
-                                 select x).ToList();
-            var notPaidLastMonth = (from x in db.tblAbsences
-                                    where x.date.Year == lastYear && x.date.Month == lastMonth && x.paid == false
-                                    select x).ToList();
-
-            Series thisPaid = new Series("الشهر الحالي", ViewType.Bar);
-            thisPaid.Points.Add(new SeriesPoint("عدد من دفع", paidThisMonth.Count));
-            thisPaid.Points.Add(new SeriesPoint("عدد من لم يدفع", notPaidThisMonth.Count));
-
-            Series lastPaid = new Series("الشهر السابق", ViewType.Bar);
-            lastPaid.Points.Add(new SeriesPoint("عدد من دفع", paidLastMonth.Count));
-            lastPaid.Points.Add(new SeriesPoint("عدد من لم يدفع", notPaidLastMonth.Count));
-
-            chartPaid.Series.Add(thisPaid);
-            chartPaid.Series.Add(lastPaid);
-
             string day = DateTime.Now.ToString("dddd", new CultureInfo("ar-EG"));
             var gps = (from x in db.tblRelations
                       where x.Day == day
@@ -72,7 +43,7 @@ namespace Teach.PL
         }
         void showCharts(bool status)
         {
-            chartPaid.Visible = status;
+            groupControl1.Visible = status;
             gridControl1.Visible = status;
         }
        
@@ -82,8 +53,8 @@ namespace Teach.PL
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //var xfrm = new frmLogin();
-            //xfrm.ShowDialog();
+            var xfrm = new frmLogin();
+            xfrm.ShowDialog();
 
             if (Properties.Settings.Default.isPaid == false)
             {
@@ -91,6 +62,7 @@ namespace Teach.PL
                 _frm.ShowDialog();
             }
             fillCharts();
+            showCharts(true);
         }
 
         private void btnPrintingSettings_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -154,8 +126,6 @@ namespace Teach.PL
 
         private void xtraTabbedMdiManager1_PageRemoved(object sender, MdiTabPageEventArgs e)
         {
-            chartPaid.Series.RemoveAt(0);
-            chartPaid.Series.RemoveAt(0);
             showCharts(true);
             fillCharts();
         }

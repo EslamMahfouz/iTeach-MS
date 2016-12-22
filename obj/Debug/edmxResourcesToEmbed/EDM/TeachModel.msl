@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TeachModelStoreContainer" CdmEntityContainer="TeachEntities">
+    <EntitySetMapping Name="tblClasses">
+      <EntityTypeMapping TypeName="TeachModel.tblClass">
+        <MappingFragment StoreEntitySet="tblClass">
+          <ScalarProperty Name="idStage" ColumnName="idStage" />
+          <ScalarProperty Name="idClass" ColumnName="idClass" />
+          <ScalarProperty Name="nameClass" ColumnName="nameClass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStages">
+      <EntityTypeMapping TypeName="TeachModel.tblStage">
+        <MappingFragment StoreEntitySet="tblStage">
+          <ScalarProperty Name="idStage" ColumnName="idStage" />
+          <ScalarProperty Name="nameStage" ColumnName="nameStage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblGroups">
+      <EntityTypeMapping TypeName="TeachModel.tblGroup">
+        <MappingFragment StoreEntitySet="tblGroup">
+          <ScalarProperty Name="maxNumber" ColumnName="maxNumber" />
+          <ScalarProperty Name="nameGroup" ColumnName="nameGroup" />
+          <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+          <ScalarProperty Name="idClass" ColumnName="idClass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAbsences">
+      <EntityTypeMapping TypeName="TeachModel.tblAbsence">
+        <MappingFragment StoreEntitySet="tblAbsence">
+          <ScalarProperty Name="day14" ColumnName="day14" />
+          <ScalarProperty Name="day13" ColumnName="day13" />
+          <ScalarProperty Name="exam" ColumnName="exam" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="day12" ColumnName="day12" />
+          <ScalarProperty Name="day11" ColumnName="day11" />
+          <ScalarProperty Name="day10" ColumnName="day10" />
+          <ScalarProperty Name="day9" ColumnName="day9" />
+          <ScalarProperty Name="day8" ColumnName="day8" />
+          <ScalarProperty Name="day7" ColumnName="day7" />
+          <ScalarProperty Name="day6" ColumnName="day6" />
+          <ScalarProperty Name="day5" ColumnName="day5" />
+          <ScalarProperty Name="day4" ColumnName="day4" />
+          <ScalarProperty Name="day3" ColumnName="day3" />
+          <ScalarProperty Name="day2" ColumnName="day2" />
+          <ScalarProperty Name="day1" ColumnName="day1" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRelations">
+      <EntityTypeMapping TypeName="TeachModel.tblRelation">
+        <MappingFragment StoreEntitySet="tblRelation">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+          <ScalarProperty Name="idRelation" ColumnName="idRelation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="TeachModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CenterDatas">
+      <EntityTypeMapping TypeName="TeachModel.CenterData">
+        <MappingFragment StoreEntitySet="CenterData">
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+          <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblStudents">
+      <EntityTypeMapping TypeName="TeachModel.tblStudent">
+        <MappingFragment StoreEntitySet="tblStudent">
+          <ScalarProperty Name="numInLog" ColumnName="numInLog" />
+          <ScalarProperty Name="notes" ColumnName="notes" />
+          <ScalarProperty Name="numberParent" ColumnName="numberParent" />
+          <ScalarProperty Name="schoolStudent" ColumnName="schoolStudent" />
+          <ScalarProperty Name="addressStudent" ColumnName="addressStudent" />
+          <ScalarProperty Name="nameStudent" ColumnName="nameStudent" />
+          <ScalarProperty Name="idStudent" ColumnName="idStudent" />
+          <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

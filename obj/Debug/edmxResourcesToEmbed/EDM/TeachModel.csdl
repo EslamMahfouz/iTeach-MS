@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblClass">
+    <Key>
+      <PropertyRef Name="idClass" />
+    </Key>
+    <Property Name="idStage" Type="Int32" Nullable="false" />
+    <Property Name="idClass" Type="Int32" Nullable="false" />
+    <Property Name="nameClass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblStage" Relationship="Self.FK_tblClass_tblStage" FromRole="tblClass" ToRole="tblStage" />
+    <NavigationProperty Name="tblGroups" Relationship="TeachModel.FK_tblGroup_tblClass" FromRole="tblClass" ToRole="tblGroup" />
+  </EntityType>
+  <EntityType Name="tblStage">
+    <Key>
+      <PropertyRef Name="idStage" />
+    </Key>
+    <Property Name="idStage" Type="Int32" Nullable="false" />
+    <Property Name="nameStage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblClasses" Relationship="Self.FK_tblClass_tblStage" FromRole="tblStage" ToRole="tblClass" />
+  </EntityType>
+  <Association Name="FK_tblClass_tblStage">
+    <End Role="tblStage" Type="Self.tblStage" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblClass" Type="Self.tblClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStage">
+        <PropertyRef Name="idStage" />
+      </Principal>
+      <Dependent Role="tblClass">
+        <PropertyRef Name="idStage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TeachEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblClasses" EntityType="Self.tblClass" />
+    <EntitySet Name="tblStages" EntityType="Self.tblStage" />
+    <AssociationSet Name="FK_tblClass_tblStage" Association="Self.FK_tblClass_tblStage">
+      <End Role="tblStage" EntitySet="tblStages" />
+      <End Role="tblClass" EntitySet="tblClasses" />
+    </AssociationSet>
+    <EntitySet Name="tblGroups" EntityType="TeachModel.tblGroup" />
+    <AssociationSet Name="FK_tblGroup_tblClass" Association="TeachModel.FK_tblGroup_tblClass">
+      <End Role="tblClass" EntitySet="tblClasses" />
+      <End Role="tblGroup" EntitySet="tblGroups" />
+    </AssociationSet>
+    <EntitySet Name="tblAbsences" EntityType="TeachModel.tblAbsence" />
+    <EntitySet Name="tblRelations" EntityType="TeachModel.tblRelation" />
+    <AssociationSet Name="FK_tblRelation_tblGroup" Association="TeachModel.FK_tblRelation_tblGroup">
+      <End Role="tblGroup" EntitySet="tblGroups" />
+      <End Role="tblRelation" EntitySet="tblRelations" />
+    </AssociationSet>
+    <EntitySet Name="tblUsers" EntityType="TeachModel.tblUser" />
+    <EntitySet Name="CenterDatas" EntityType="TeachModel.CenterData" />
+    <EntitySet Name="tblStudents" EntityType="TeachModel.tblStudent" />
+    <AssociationSet Name="FK_tblAbsence_tblStudent" Association="TeachModel.FK_tblAbsence_tblStudent">
+      <End Role="tblStudent" EntitySet="tblStudents" />
+      <End Role="tblAbsence" EntitySet="tblAbsences" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblStudent_tblGroup" Association="TeachModel.FK_tblStudent_tblGroup">
+      <End Role="tblGroup" EntitySet="tblGroups" />
+      <End Role="tblStudent" EntitySet="tblStudents" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tblGroup">
+    <Key>
+      <PropertyRef Name="idGroup" />
+    </Key>
+    <Property Name="idClass" Type="Int32" />
+    <Property Name="idGroup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="maxNumber" Type="Int32" />
+    <NavigationProperty Name="tblClass" Relationship="TeachModel.FK_tblGroup_tblClass" FromRole="tblGroup" ToRole="tblClass" />
+    <NavigationProperty Name="tblRelations" Relationship="TeachModel.FK_tblRelation_tblGroup" FromRole="tblGroup" ToRole="tblRelation" />
+    <NavigationProperty Name="tblStudents" Relationship="TeachModel.FK_tblStudent_tblGroup" FromRole="tblGroup" ToRole="tblStudent" />
+  </EntityType>
+  <Association Name="FK_tblGroup_tblClass">
+    <End Type="TeachModel.tblClass" Role="tblClass" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TeachModel.tblGroup" Role="tblGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClass">
+        <PropertyRef Name="idClass" />
+      </Principal>
+      <Dependent Role="tblGroup">
+        <PropertyRef Name="idClass" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblAbsence">
+    <Key>
+      <PropertyRef Name="idStudent" />
+      <PropertyRef Name="date" />
+    </Key>
+    <Property Name="idStudent" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="day1" Type="Boolean" />
+    <Property Name="day2" Type="Boolean" />
+    <Property Name="day3" Type="Boolean" />
+    <Property Name="day4" Type="Boolean" />
+    <Property Name="day5" Type="Boolean" />
+    <Property Name="day6" Type="Boolean" />
+    <Property Name="day7" Type="Boolean" />
+    <Property Name="day8" Type="Boolean" />
+    <Property Name="day9" Type="Boolean" />
+    <Property Name="day10" Type="Boolean" />
+    <Property Name="day11" Type="Boolean" />
+    <Property Name="day12" Type="Boolean" />
+    <Property Name="paid" Type="Boolean" />
+    <Property Name="exam" Type="Double" />
+    <Property Name="day13" Type="Boolean" />
+    <Property Name="day14" Type="Boolean" />
+    <NavigationProperty Name="tblStudent" Relationship="TeachModel.FK_tblAbsence_tblStudent" FromRole="tblAbsence" ToRole="tblStudent" />
+  </EntityType>
+  <EntityType Name="tblRelation">
+    <Key>
+      <PropertyRef Name="idRelation" />
+    </Key>
+    <Property Name="idRelation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idGroup" Type="Int32" />
+    <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblGroup" Relationship="TeachModel.FK_tblRelation_tblGroup" FromRole="tblRelation" ToRole="tblGroup" />
+  </EntityType>
+  <Association Name="FK_tblRelation_tblGroup">
+    <End Type="TeachModel.tblGroup" Role="tblGroup" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TeachModel.tblRelation" Role="tblRelation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGroup">
+        <PropertyRef Name="idGroup" />
+      </Principal>
+      <Dependent Role="tblRelation">
+        <PropertyRef Name="idGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CenterData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblStudent">
+    <Key>
+      <PropertyRef Name="idStudent" />
+    </Key>
+    <Property Name="idGroup" Type="Int32" />
+    <Property Name="idStudent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nameStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="addressStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="schoolStudent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="numberParent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="numInLog" Type="Int32" />
+    <NavigationProperty Name="tblAbsences" Relationship="TeachModel.FK_tblAbsence_tblStudent" FromRole="tblStudent" ToRole="tblAbsence" />
+    <NavigationProperty Name="tblGroup" Relationship="TeachModel.FK_tblStudent_tblGroup" FromRole="tblStudent" ToRole="tblGroup" />
+  </EntityType>
+  <Association Name="FK_tblAbsence_tblStudent">
+    <End Type="TeachModel.tblStudent" Role="tblStudent" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TeachModel.tblAbsence" Role="tblAbsence" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblStudent">
+        <PropertyRef Name="idStudent" />
+      </Principal>
+      <Dependent Role="tblAbsence">
+        <PropertyRef Name="idStudent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblStudent_tblGroup">
+    <End Type="TeachModel.tblGroup" Role="tblGroup" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TeachModel.tblStudent" Role="tblStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblGroup">
+        <PropertyRef Name="idGroup" />
+      </Principal>
+      <Dependent Role="tblStudent">
+        <PropertyRef Name="idGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
