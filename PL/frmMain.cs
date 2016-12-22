@@ -7,7 +7,6 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Data.SqlClient;
 using Teach.EDM;
-using DevExpress.XtraCharts;
 using System.Globalization;
 
 namespace Teach.PL
