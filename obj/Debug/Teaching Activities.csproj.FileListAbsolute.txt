@@ -216,3 +216,4 @@ D:\Faculty\Work\Teach - Teacher\Teach\obj\Debug\Teaching Activities.exe.manifest
 D:\Faculty\Work\Teach - Teacher\Teach\obj\Debug\Teaching Activities.application
 D:\Faculty\Work\Teach - Teacher\Teach\obj\Debug\Teaching Activities.exe
 D:\Faculty\Work\Teach - Teacher\Teach\obj\Debug\Teaching Activities.pdb
+D:\Faculty\Work\Teach - Teacher\Teach\obj\Debug\Teaching Activities.csprojResolveAssemblyReference.cache
