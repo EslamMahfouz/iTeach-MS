@@ -35,6 +35,7 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.btnCenterData = new DevExpress.XtraBars.BarButtonItem();
             this.btnPrintingSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLoginSettings = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem19 = new DevExpress.XtraBars.BarSubItem();
             this.btnAddGroup = new DevExpress.XtraBars.BarButtonItem();
             this.btnShowGroups = new DevExpress.XtraBars.BarButtonItem();
@@ -104,7 +105,6 @@
             this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -185,7 +185,7 @@
             this.btnShowGroups,
             this.btnChangeGroup,
             this.btnDepits,
-            this.barButtonItem1});
+            this.btnLoginSettings});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 95;
             this.barManager1.StatusBar = this.bar3;
@@ -217,7 +217,7 @@
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCenterData),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPrintingSettings, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLoginSettings)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // btnCenterData
@@ -240,6 +240,16 @@
             this.btnPrintingSettings.Name = "btnPrintingSettings";
             this.btnPrintingSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrintingSettings_ItemClick);
             // 
+            // btnLoginSettings
+            // 
+            this.btnLoginSettings.Caption = "بيانات الدخول";
+            this.btnLoginSettings.Id = 94;
+            this.btnLoginSettings.ImageUri.Uri = "Forward";
+            this.btnLoginSettings.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnLoginSettings.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnLoginSettings.Name = "btnLoginSettings";
+            this.btnLoginSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLoginSettings_ItemClick);
+            // 
             // barSubItem19
             // 
             this.barSubItem19.Caption = "المجموعات";
@@ -248,7 +258,7 @@
             this.barSubItem19.ItemAppearance.Normal.Options.UseFont = true;
             this.barSubItem19.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnAddGroup),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnShowGroups)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.KeyTip, this.btnShowGroups, "", false, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.Standard, "G", "")});
             this.barSubItem19.Name = "barSubItem19";
             // 
             // btnAddGroup
@@ -258,7 +268,9 @@
             this.btnAddGroup.ImageUri.Uri = "Add";
             this.btnAddGroup.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnAddGroup.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnAddGroup.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A));
             this.btnAddGroup.Name = "btnAddGroup";
+            this.btnAddGroup.ShortcutKeyDisplayString = "Ctrl+A";
             this.btnAddGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddGroup_ItemClick);
             // 
             // btnShowGroups
@@ -268,7 +280,9 @@
             this.btnShowGroups.ImageUri.Uri = "ListBullets";
             this.btnShowGroups.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnShowGroups.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnShowGroups.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G));
             this.btnShowGroups.Name = "btnShowGroups";
+            this.btnShowGroups.ShortcutKeyDisplayString = "Ctrl+G";
             this.btnShowGroups.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnShowGroups_ItemClick);
             // 
             // barSubItem20
@@ -289,7 +303,9 @@
             this.btnChangeGroup.ImageUri.Uri = "Replace";
             this.btnChangeGroup.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
             this.btnChangeGroup.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnChangeGroup.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
             this.btnChangeGroup.Name = "btnChangeGroup";
+            this.btnChangeGroup.ShortcutKeyDisplayString = "Ctrl+C";
             this.btnChangeGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChangeGroup_ItemClick);
             // 
             // btnDepits
@@ -750,15 +766,6 @@
             this.groupControl1.Text = "مجموعات اليوم";
             this.groupControl1.Visible = false;
             // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "بيانات الدخول";
-            this.barButtonItem1.Id = 94;
-            this.barButtonItem1.ImageUri.Uri = "Forward";
-            this.barButtonItem1.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.barButtonItem1.ItemAppearance.Normal.Options.UseFont = true;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
             // frmMain
             // 
             this.Appearance.ForeColor = System.Drawing.SystemColors.Control;
@@ -874,6 +881,6 @@
         private DevExpress.XtraBars.BarSubItem barSubItem20;
         private DevExpress.XtraBars.BarButtonItem btnChangeGroup;
         private DevExpress.XtraBars.BarButtonItem btnDepits;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem btnLoginSettings;
     }
 }

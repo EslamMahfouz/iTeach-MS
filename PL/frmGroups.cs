@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Drawing;
 using System.Data;
 using DevExpress.XtraGrid.Views.Grid;
+using System.IO;
 
 namespace Teach.PL
 {
@@ -52,7 +53,6 @@ namespace Teach.PL
                 var date = Convert.ToDateTime(dateEdit1.EditValue);
                 DateTime lastMonth = date.AddMonths(-1);
                 dt = absence.getAbsenceOfGroup(idGroup, lastMonth);
-                MessageBox.Show(dt.Rows[0]["م"].ToString());
 
                 var dates = from x in db.tblRelations
                             where x.idGroup == idGroup
@@ -363,11 +363,16 @@ namespace Teach.PL
                 var idStudent = Convert.ToInt32(gridView3.GetFocusedRowCellValue(colم));
                 var date = Convert.ToDateTime(dateEdit1.EditValue);
                 var cd = db.CenterDatas.Find(1);
-                report.Name = cd.Name;
+                report.CenterName.Value = cd.Name;
                 report.address.Value = cd.Address;
                 report.Phone1.Value = cd.Phone1;
                 report.Phone2.Value = cd.Phone2;
                 report.subject.Value = cd.Subject;
+                byte[] img = cd.Logo;
+                MemoryStream ms = new MemoryStream(img);
+                Image _img = Image.FromStream(ms);
+                report.xrPictureBox1.Image = _img;
+
                 DateTime month = Convert.ToDateTime(dateEdit1.EditValue);
                 report.month.Value = month.ToString("MMMM، yyyy", new CultureInfo("ar-EG"));
                 var dt = absence.repMonthly(idStudent, date);

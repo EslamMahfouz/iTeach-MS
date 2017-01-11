@@ -883,14 +883,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Teaching Activities.exe" size="1021392">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Teaching Activities.exe" size="1024976">
       <assemblyIdentity name="Teaching Activities" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>thCSiYgidM9nt1cbB+4BuxQzOoIvpCm+fQ2o+9jEVd0=</dsig:DigestValue>
+        <dsig:DigestValue>4oJ6MXCmyUuQao7CoKh4fYsDEclj9tCktoHE0HqShLY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -130,6 +130,18 @@ namespace Teach.PL
             frmDepits frm = new frmDepits();
             addForm(frm);
         }
+
+        private void btnLoginSettings_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmLogin frm = new frmLogin();
+            frm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                frmUsers Ufrm = new frmUsers();
+                addForm(Ufrm);
+            }
+        }
     }
 }
 
