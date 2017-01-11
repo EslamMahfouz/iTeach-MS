@@ -75,28 +75,6 @@ namespace Teach.PL
             addForm(frm);
         }
 
-        private void btnAddGroup_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            var frm = new frmAddGroup();
-            frm.ShowDialog();
-        }
-        private void btnShowGroups_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            var frm = new frmGroups();
-            addForm(frm);
-        }
-
-        private void btnChangeGroup_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            var frm = new frmChangeGroup();
-            frm.ShowDialog();
-        }
-        private void btnDepits_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
-        {
-            frmDepits frm = new frmDepits();
-            addForm(frm);
-        }
-
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
@@ -129,6 +107,29 @@ namespace Teach.PL
             fillCharts();
         }
 
+        private void btnAddGroup_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var frm = new frmAddGroup();
+            frm.ShowDialog();
+        }
+
+        private void btnShowGroups_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmGroups frm = new frmGroups();
+            addForm(frm);
+        }
+
+        private void btnChangeGroup_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var frm = new frmChangeGroup();
+            frm.ShowDialog();
+        }
+
+        private void btnDepits_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmDepits frm = new frmDepits();
+            addForm(frm);
+        }
     }
 }
 

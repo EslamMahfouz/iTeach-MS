@@ -21,8 +21,8 @@ namespace Teach.PL
             var userName = txtUserName.Text;
             var password = txtPassword.Text;
             var log = (from x in db.tblUsers
-                      where x.userName == userName && x.password == password
-                      select x).ToList();
+                       where x.userName == userName && x.password == password
+                       select x).ToList();
 
             if (log.Count > 0)
             {

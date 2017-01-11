@@ -35,6 +35,12 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.btnCenterData = new DevExpress.XtraBars.BarButtonItem();
             this.btnPrintingSettings = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem19 = new DevExpress.XtraBars.BarSubItem();
+            this.btnAddGroup = new DevExpress.XtraBars.BarButtonItem();
+            this.btnShowGroups = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem20 = new DevExpress.XtraBars.BarSubItem();
+            this.btnChangeGroup = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDepits = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.skinBarSubItem3 = new DevExpress.XtraBars.SkinBarSubItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
@@ -93,21 +99,14 @@
             this.navBarGroup4 = new DevExpress.XtraNavBar.NavBarGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
-            this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.btnAddGroup = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnShowGroups = new DevExpress.XtraNavBar.NavBarItem();
-            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.btnChangeGroup = new DevExpress.XtraNavBar.NavBarItem();
-            this.btnDepits = new DevExpress.XtraNavBar.NavBarItem();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
@@ -179,9 +178,16 @@
             this.btnAddTeacher,
             this.btnPrintingSettings,
             this.btnCenterData,
-            this.barStaticItem1});
+            this.barStaticItem1,
+            this.barSubItem19,
+            this.barSubItem20,
+            this.btnAddGroup,
+            this.btnShowGroups,
+            this.btnChangeGroup,
+            this.btnDepits,
+            this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 88;
+            this.barManager1.MaxItemId = 95;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -191,7 +197,9 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem19),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem20)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -202,13 +210,14 @@
             this.barSubItem1.Border = DevExpress.XtraEditors.Controls.BorderStyles.Default;
             this.barSubItem1.Caption = "إعدادات البرنامج";
             this.barSubItem1.Id = 0;
-            this.barSubItem1.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barSubItem1.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F);
             this.barSubItem1.ItemAppearance.Normal.Options.UseFont = true;
             this.barSubItem1.ItemInMenuAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.barSubItem1.ItemInMenuAppearance.Normal.Options.UseFont = true;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCenterData),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPrintingSettings, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPrintingSettings, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // btnCenterData
@@ -216,6 +225,8 @@
             this.btnCenterData.Caption = "بيانات السنتر";
             this.btnCenterData.Id = 78;
             this.btnCenterData.ImageUri.Uri = "Home";
+            this.btnCenterData.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnCenterData.ItemAppearance.Normal.Options.UseFont = true;
             this.btnCenterData.Name = "btnCenterData";
             this.btnCenterData.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCenterData_ItemClick);
             // 
@@ -224,8 +235,72 @@
             this.btnPrintingSettings.Caption = "إعدادات الطباعة";
             this.btnPrintingSettings.Id = 77;
             this.btnPrintingSettings.ImageUri.Uri = "PrintDialog";
+            this.btnPrintingSettings.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnPrintingSettings.ItemAppearance.Normal.Options.UseFont = true;
             this.btnPrintingSettings.Name = "btnPrintingSettings";
             this.btnPrintingSettings.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrintingSettings_ItemClick);
+            // 
+            // barSubItem19
+            // 
+            this.barSubItem19.Caption = "المجموعات";
+            this.barSubItem19.Id = 88;
+            this.barSubItem19.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.barSubItem19.ItemAppearance.Normal.Options.UseFont = true;
+            this.barSubItem19.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnAddGroup),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnShowGroups)});
+            this.barSubItem19.Name = "barSubItem19";
+            // 
+            // btnAddGroup
+            // 
+            this.btnAddGroup.Caption = "إضافة مجموعة";
+            this.btnAddGroup.Id = 90;
+            this.btnAddGroup.ImageUri.Uri = "Add";
+            this.btnAddGroup.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnAddGroup.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnAddGroup.Name = "btnAddGroup";
+            this.btnAddGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddGroup_ItemClick);
+            // 
+            // btnShowGroups
+            // 
+            this.btnShowGroups.Caption = "عرض المجموعات";
+            this.btnShowGroups.Id = 91;
+            this.btnShowGroups.ImageUri.Uri = "ListBullets";
+            this.btnShowGroups.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnShowGroups.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnShowGroups.Name = "btnShowGroups";
+            this.btnShowGroups.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnShowGroups_ItemClick);
+            // 
+            // barSubItem20
+            // 
+            this.barSubItem20.Caption = "الطلاب";
+            this.barSubItem20.Id = 89;
+            this.barSubItem20.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.barSubItem20.ItemAppearance.Normal.Options.UseFont = true;
+            this.barSubItem20.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnChangeGroup),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDepits)});
+            this.barSubItem20.Name = "barSubItem20";
+            // 
+            // btnChangeGroup
+            // 
+            this.btnChangeGroup.Caption = "تغيير مجموعة طالب";
+            this.btnChangeGroup.Id = 92;
+            this.btnChangeGroup.ImageUri.Uri = "Replace";
+            this.btnChangeGroup.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnChangeGroup.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnChangeGroup.Name = "btnChangeGroup";
+            this.btnChangeGroup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChangeGroup_ItemClick);
+            // 
+            // btnDepits
+            // 
+            this.btnDepits.Caption = "المدينيين";
+            this.btnDepits.Id = 93;
+            this.btnDepits.ImageUri.Uri = "Currency";
+            this.btnDepits.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.btnDepits.ItemAppearance.Normal.Options.UseFont = true;
+            this.btnDepits.Name = "btnDepits";
+            this.btnDepits.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDepits_ItemClick);
             // 
             // bar3
             // 
@@ -265,7 +340,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1278, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(1278, 33);
             // 
             // barDockControlBottom
             // 
@@ -278,15 +353,15 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 515);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 33);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 512);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1278, 30);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 515);
+            this.barDockControlRight.Location = new System.Drawing.Point(1278, 33);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 512);
             // 
             // btnBackup
             // 
@@ -621,86 +696,6 @@
             // 
             this.navBarItem1.Name = "navBarItem1";
             // 
-            // navBarControl1
-            // 
-            this.navBarControl1.ActiveGroup = this.navBarGroup1;
-            this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.navBarControl1.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1,
-            this.navBarGroup2});
-            this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
-            this.btnAddGroup,
-            this.btnShowGroups,
-            this.btnChangeGroup,
-            this.btnDepits});
-            this.navBarControl1.Location = new System.Drawing.Point(1034, 30);
-            this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 244;
-            this.navBarControl1.Size = new System.Drawing.Size(244, 515);
-            this.navBarControl1.TabIndex = 5;
-            this.navBarControl1.Text = "navBarControl1";
-            // 
-            // navBarGroup1
-            // 
-            this.navBarGroup1.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.navBarGroup1.Appearance.Options.UseFont = true;
-            this.navBarGroup1.Caption = "المجموعات";
-            this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnAddGroup),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnShowGroups)});
-            this.navBarGroup1.Name = "navBarGroup1";
-            // 
-            // btnAddGroup
-            // 
-            this.btnAddGroup.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.btnAddGroup.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnAddGroup.Appearance.Options.UseFont = true;
-            this.btnAddGroup.Caption = "إضافة مجموعة";
-            this.btnAddGroup.Name = "btnAddGroup";
-            this.btnAddGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnAddGroup.SmallImage")));
-            this.btnAddGroup.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnAddGroup_LinkClicked);
-            // 
-            // btnShowGroups
-            // 
-            this.btnShowGroups.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.btnShowGroups.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnShowGroups.Appearance.Options.UseFont = true;
-            this.btnShowGroups.Caption = "عرض المجموعات";
-            this.btnShowGroups.Name = "btnShowGroups";
-            this.btnShowGroups.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnShowGroups.SmallImage")));
-            this.btnShowGroups.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnShowGroups_LinkClicked);
-            // 
-            // navBarGroup2
-            // 
-            this.navBarGroup2.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.navBarGroup2.Appearance.Options.UseFont = true;
-            this.navBarGroup2.Caption = "الطلاب";
-            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnChangeGroup),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.btnDepits)});
-            this.navBarGroup2.Name = "navBarGroup2";
-            // 
-            // btnChangeGroup
-            // 
-            this.btnChangeGroup.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.btnChangeGroup.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnChangeGroup.Appearance.Options.UseFont = true;
-            this.btnChangeGroup.Caption = "تغيير مجموعة طالب";
-            this.btnChangeGroup.Name = "btnChangeGroup";
-            this.btnChangeGroup.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnChangeGroup.SmallImage")));
-            this.btnChangeGroup.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnChangeGroup_LinkClicked);
-            // 
-            // btnDepits
-            // 
-            this.btnDepits.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
-            this.btnDepits.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.btnDepits.Appearance.Options.UseFont = true;
-            this.btnDepits.Caption = "المدينيين";
-            this.btnDepits.Name = "btnDepits";
-            this.btnDepits.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnDepits.SmallImage")));
-            this.btnDepits.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.btnDepits_LinkClicked);
-            // 
             // gridView1
             // 
             this.gridView1.GridControl = this.gridControl1;
@@ -713,7 +708,7 @@
             this.gridControl1.MainView = this.cardView1;
             this.gridControl1.MenuManager = this.barManager1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1030, 471);
+            this.gridControl1.Size = new System.Drawing.Size(1274, 468);
             this.gridControl1.TabIndex = 15;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.cardView1,
@@ -723,6 +718,12 @@
             // 
             // cardView1
             // 
+            this.cardView1.Appearance.Card.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.cardView1.Appearance.Card.Options.UseFont = true;
+            this.cardView1.Appearance.CardCaption.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.cardView1.Appearance.CardCaption.Options.UseFont = true;
+            this.cardView1.Appearance.FieldCaption.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.cardView1.Appearance.FieldCaption.Options.UseFont = true;
             this.cardView1.CardCaptionFormat = "المجموعة {0}";
             this.cardView1.FocusedCardTopFieldIndex = 0;
             this.cardView1.GridControl = this.gridControl1;
@@ -742,12 +743,21 @@
             this.groupControl1.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.groupControl1.Controls.Add(this.gridControl1);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 30);
+            this.groupControl1.Location = new System.Drawing.Point(0, 33);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1034, 515);
+            this.groupControl1.Size = new System.Drawing.Size(1278, 512);
             this.groupControl1.TabIndex = 20;
             this.groupControl1.Text = "مجموعات اليوم";
             this.groupControl1.Visible = false;
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "بيانات الدخول";
+            this.barButtonItem1.Id = 94;
+            this.barButtonItem1.ImageUri.Uri = "Forward";
+            this.barButtonItem1.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.barButtonItem1.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // frmMain
             // 
@@ -758,7 +768,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1278, 579);
             this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.navBarControl1);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -777,7 +786,6 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
@@ -854,20 +862,18 @@
         private DevExpress.XtraBars.BarButtonItem btnAddTeacher;
         private DevExpress.XtraBars.BarButtonItem btnPrintingSettings;
         private DevExpress.XtraBars.BarButtonItem btnCenterData;
-        private DevExpress.XtraNavBar.NavBarControl navBarControl1;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
-        private DevExpress.XtraNavBar.NavBarItem btnAddGroup;
-        private DevExpress.XtraNavBar.NavBarItem btnShowGroups;
-        private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
-        private DevExpress.XtraNavBar.NavBarItem btnChangeGroup;
-        private DevExpress.XtraNavBar.NavBarItem btnDepits;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Card.CardView cardView1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
-
-
+        private DevExpress.XtraBars.BarSubItem barSubItem19;
+        private DevExpress.XtraBars.BarButtonItem btnAddGroup;
+        private DevExpress.XtraBars.BarButtonItem btnShowGroups;
+        private DevExpress.XtraBars.BarSubItem barSubItem20;
+        private DevExpress.XtraBars.BarButtonItem btnChangeGroup;
+        private DevExpress.XtraBars.BarButtonItem btnDepits;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

@@ -56,5 +56,23 @@ namespace Teach.BL
             DAL.Close();
             return dt;
         }
+
+        public DataTable getAbsenceOfGroup(int idGroup, DateTime date)
+        {
+            var DAL = new DAL.DataAccessLayer();
+            var dt = new DataTable();
+            var param = new SqlParameter[2];
+
+            param[0] = new SqlParameter("@idGroup", SqlDbType.Int);
+            param[0].Value = idGroup;
+
+            param[1] = new SqlParameter("@date", SqlDbType.Date);
+            param[1].Value = date;
+
+            dt = DAL.SelectData("getAbsenceOfGroup", param);
+            DAL.Close();
+            return dt;
+        }
+
     }
 }

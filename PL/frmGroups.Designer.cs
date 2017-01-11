@@ -56,6 +56,7 @@
             this.txtPrice = new DevExpress.XtraEditors.TextEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.btnPrintGrid = new DevExpress.XtraEditors.SimpleButton();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.btnRepGroup = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -514,6 +515,7 @@
             // 
             // xtraTabPage3
             // 
+            this.xtraTabPage3.Controls.Add(this.btnPrintGrid);
             this.xtraTabPage3.Controls.Add(this.dateEdit1);
             this.xtraTabPage3.Controls.Add(this.btnRepGroup);
             this.xtraTabPage3.Controls.Add(this.labelControl1);
@@ -525,6 +527,20 @@
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1023, 464);
             this.xtraTabPage3.Text = "الغياب + الدفع";
+            // 
+            // btnPrintGrid
+            // 
+            this.btnPrintGrid.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            this.btnPrintGrid.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.btnPrintGrid.Appearance.Options.UseFont = true;
+            this.btnPrintGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintGrid.Image")));
+            this.btnPrintGrid.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnPrintGrid.Location = new System.Drawing.Point(6, 16);
+            this.btnPrintGrid.Name = "btnPrintGrid";
+            this.btnPrintGrid.Size = new System.Drawing.Size(208, 48);
+            this.btnPrintGrid.TabIndex = 10;
+            this.btnPrintGrid.Text = "طباعة";
+            this.btnPrintGrid.Click += new System.EventHandler(this.btnPrintGrid_Click);
             // 
             // dateEdit1
             // 
@@ -550,7 +566,7 @@
             this.btnRepGroup.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.btnRepGroup.Appearance.Options.UseFont = true;
             this.btnRepGroup.Image = ((System.Drawing.Image)(resources.GetObject("btnRepGroup.Image")));
-            this.btnRepGroup.Location = new System.Drawing.Point(6, 16);
+            this.btnRepGroup.Location = new System.Drawing.Point(220, 16);
             this.btnRepGroup.Name = "btnRepGroup";
             this.btnRepGroup.Size = new System.Drawing.Size(180, 48);
             this.btnRepGroup.TabIndex = 7;
@@ -574,7 +590,7 @@
             this.btnReport.Appearance.Options.UseFont = true;
             this.btnReport.Image = ((System.Drawing.Image)(resources.GetObject("btnReport.Image")));
             this.btnReport.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnReport.Location = new System.Drawing.Point(192, 16);
+            this.btnReport.Location = new System.Drawing.Point(406, 16);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(180, 48);
             this.btnReport.TabIndex = 3;
@@ -751,6 +767,11 @@
             // 
             // gridView3
             // 
+            this.gridView3.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.gridView3.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView3.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView3.Appearance.Row.Options.UseFont = true;
+            this.gridView3.ColumnPanelRowHeight = 50;
             this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colم,
             this.colالطالب,
@@ -774,8 +795,10 @@
             this.colرقمالكشف});
             this.gridView3.GridControl = this.gridControl3;
             this.gridView3.Name = "gridView3";
+            this.gridView3.RowHeight = 50;
             this.gridView3.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colرقمالكشف, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.gridView3.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gridView3_RowStyle);
             this.gridView3.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gridView3_CellValueChanged);
             // 
             // colم
@@ -791,6 +814,7 @@
             this.colالطالب.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colالطالب.FieldName = "الطالب";
             this.colالطالب.Name = "colالطالب";
+            this.colالطالب.OptionsColumn.AllowEdit = false;
             this.colالطالب.Visible = true;
             this.colالطالب.VisibleIndex = 1;
             this.colالطالب.Width = 216;
@@ -1000,6 +1024,7 @@
             this.colرقمالكشف.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colرقمالكشف.FieldName = "رقم الكشف";
             this.colرقمالكشف.Name = "colرقمالكشف";
+            this.colرقمالكشف.OptionsColumn.AllowEdit = false;
             this.colرقمالكشف.Visible = true;
             this.colرقمالكشف.VisibleIndex = 0;
             this.colرقمالكشف.Width = 112;
@@ -1042,6 +1067,11 @@
             // 
             // gridView2
             // 
+            this.gridView2.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.gridView2.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView2.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView2.Appearance.Row.Options.UseFont = true;
+            this.gridView2.ColumnPanelRowHeight = 50;
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colم1,
             this.colالإسم,
@@ -1052,6 +1082,7 @@
             this.colرقمالكشف1});
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.Name = "gridView2";
+            this.gridView2.RowHeight = 50;
             this.gridView2.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colم1, DevExpress.Data.ColumnSortOrder.Ascending),
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colرقمالكشف1, DevExpress.Data.ColumnSortOrder.Ascending)});
@@ -1138,9 +1169,11 @@
             // 
             // gridView5
             // 
+            this.gridView5.ColumnPanelRowHeight = 50;
             this.gridView5.GridControl = this.gridControl1;
             this.gridView5.Name = "gridView5";
             this.gridView5.OptionsBehavior.Editable = false;
+            this.gridView5.RowHeight = 40;
             // 
             // gridControl1
             // 
@@ -1501,5 +1534,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colالدفع;
         private DevExpress.XtraGrid.Columns.GridColumn colالإمتحان;
         private DevExpress.XtraGrid.Columns.GridColumn colرقمالكشف;
+        private DevExpress.XtraEditors.SimpleButton btnPrintGrid;
     }
 }

@@ -8,6 +8,9 @@ using Teach.Reports;
 using DevExpress.XtraReports.UI;
 using Teach.EDM;
 using System.Globalization;
+using System.Drawing;
+using System.Data;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace Teach.PL
 {
@@ -16,6 +19,7 @@ namespace Teach.PL
         TeachEntities db = new TeachEntities();
         clsFill f = new clsFill(); clsGet g = new clsGet(); clsAdd a = new clsAdd();
         clsAbsence absence = new clsAbsence();
+        DataTable dt = new DataTable();
 
         private int idGroup, lastNum;
         private bool isNew = false;
@@ -43,8 +47,12 @@ namespace Teach.PL
         {
             try
             {
+                dt.Clear();
                 lastNum = 0;
                 var date = Convert.ToDateTime(dateEdit1.EditValue);
+                DateTime lastMonth = date.AddMonths(-1);
+                dt = absence.getAbsenceOfGroup(idGroup, lastMonth);
+                MessageBox.Show(dt.Rows[0]["م"].ToString());
 
                 var dates = from x in db.tblRelations
                             where x.idGroup == idGroup
@@ -52,9 +60,24 @@ namespace Teach.PL
                 gridControl1.DataSource = dates.ToList();
                 gridView5.Columns["م"].Visible = false;
 
+                gridView5.Columns["اليوم"].AppearanceHeader.Font = new Font("Tahoma", 12, FontStyle.Bold);
+                gridView5.Columns["الساعة"].AppearanceHeader.Font = new Font("Tahoma", 12, FontStyle.Bold);
+
+                gridView5.Columns["اليوم"].AppearanceCell.Font = new Font("Tahoma", 12, FontStyle.Regular);
+                gridView5.Columns["الساعة"].AppearanceCell.Font = new Font("Tahoma", 12, FontStyle.Regular);
+
+                gridView5.Columns["اليوم"].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                gridView5.Columns["الساعة"].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+
+                gridView5.Columns["اليوم"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+                gridView5.Columns["الساعة"].AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+
                 getStudentsOfGroupTableAdapter.Fill(dsGetStudentsofGroup.getStudentsOfGroup, idGroup);
                 getAbsenceOfGroupTableAdapter.Fill(dsGetAbsenceOfGroup.getAbsenceOfGroup, idGroup, date);
-                gridView2.Columns["colرقمالكشف1"].SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
+
+                gridView2.Columns["رقم الكشف"].BestFit();
+                gridView3.Columns["رقم الكشف"].BestFit();
+
             }
             catch
             {
@@ -415,6 +438,33 @@ namespace Teach.PL
             catch
             {
                 return;
+            }
+        }
+
+        private void btnPrintGrid_Click(object sender, EventArgs e)
+        {
+            gridView3.ShowPrintPreview();
+        }
+
+        private void gridView3_RowStyle(object sender, RowStyleEventArgs e)
+        {
+            GridView View = sender as GridView;
+            bool paid = true;
+            if (e.RowHandle >= 0)
+            {
+                int studentID = Convert.ToInt32(View.GetRowCellDisplayText(e.RowHandle, View.Columns["م"]));
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if(Convert.ToInt32(dr["م"]) == studentID)
+                    {
+                        paid = Convert.ToBoolean(dr["الدفع"]);
+                    }
+                }
+                if (!paid)
+                {
+                    e.Appearance.BackColor = Color.Salmon;
+                    e.Appearance.BackColor2 = Color.SandyBrown;
+                }
             }
         }
 
