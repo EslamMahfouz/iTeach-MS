@@ -53,6 +53,8 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.txtMaxDegree = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTotal = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubject.Properties)).BeginInit();
@@ -73,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBackup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxDegree.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotal.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
@@ -280,7 +283,7 @@
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
             this.btnSave.Appearance.Options.UseFont = true;
-            this.btnSave.Location = new System.Drawing.Point(698, 425);
+            this.btnSave.Location = new System.Drawing.Point(698, 451);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(169, 70);
             this.btnSave.TabIndex = 1;
@@ -290,7 +293,7 @@
             // txtBackup
             // 
             this.txtBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBackup.Location = new System.Drawing.Point(558, 343);
+            this.txtBackup.Location = new System.Drawing.Point(553, 316);
             this.txtBackup.Name = "txtBackup";
             this.txtBackup.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtBackup.Properties.Appearance.Options.UseFont = true;
@@ -302,7 +305,7 @@
             // 
             this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.labelControl1.Location = new System.Drawing.Point(873, 346);
+            this.labelControl1.Location = new System.Drawing.Point(868, 319);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(240, 24);
             this.labelControl1.TabIndex = 3;
@@ -315,7 +318,7 @@
             this.btnBrowse.Appearance.Options.UseFont = true;
             this.btnBrowse.Image = ((System.Drawing.Image)(resources.GetObject("btnBrowse.Image")));
             this.btnBrowse.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnBrowse.Location = new System.Drawing.Point(501, 328);
+            this.btnBrowse.Location = new System.Drawing.Point(496, 301);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(51, 56);
             this.btnBrowse.TabIndex = 4;
@@ -324,12 +327,14 @@
             // txtMaxDegree
             // 
             this.txtMaxDegree.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMaxDegree.Location = new System.Drawing.Point(767, 389);
+            this.txtMaxDegree.EditValue = 0D;
+            this.txtMaxDegree.Location = new System.Drawing.Point(762, 362);
             this.txtMaxDegree.Name = "txtMaxDegree";
             this.txtMaxDegree.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.txtMaxDegree.Properties.Appearance.Options.UseFont = true;
-            this.txtMaxDegree.Properties.Mask.EditMask = "d";
+            this.txtMaxDegree.Properties.Mask.EditMask = "f";
             this.txtMaxDegree.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtMaxDegree.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.txtMaxDegree.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtMaxDegree.Size = new System.Drawing.Size(100, 30);
             this.txtMaxDegree.TabIndex = 5;
@@ -338,17 +343,44 @@
             // 
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.labelControl2.Location = new System.Drawing.Point(904, 392);
+            this.labelControl2.Location = new System.Drawing.Point(899, 365);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(209, 24);
             this.labelControl2.TabIndex = 6;
             this.labelControl2.Text = "الدرجة النهائية للإمتحانات";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.labelControl3.Location = new System.Drawing.Point(899, 401);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(139, 24);
+            this.labelControl3.TabIndex = 8;
+            this.labelControl3.Text = "عدد مرات الحضور";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotal.EditValue = 0;
+            this.txtTotal.Location = new System.Drawing.Point(762, 398);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.txtTotal.Properties.Appearance.Options.UseFont = true;
+            this.txtTotal.Properties.Mask.EditMask = "d";
+            this.txtTotal.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTotal.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtTotal.Size = new System.Drawing.Size(100, 30);
+            this.txtTotal.TabIndex = 7;
             // 
             // frmCenterData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 533);
+            this.Controls.Add(this.labelControl3);
+            this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.txtMaxDegree);
             this.Controls.Add(this.btnBrowse);
@@ -385,6 +417,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtBackup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaxDegree.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTotal.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -416,5 +449,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraEditors.TextEdit txtMaxDegree;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.TextEdit txtTotal;
     }
 }

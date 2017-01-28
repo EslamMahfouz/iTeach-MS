@@ -30,6 +30,8 @@ namespace Teach.PL
                 txtMail.Text = centerData.Mail;
                 txtSubject.Text = centerData.Subject;
                 txtMaxDegree.Text = Properties.Settings.Default.maxDegree.ToString();
+                txtTotal.Text = Properties.Settings.Default.totalAttendance.ToString();
+
                 byte[] img = centerData.Logo;
                 MemoryStream ms = new MemoryStream(img);
                 pBox.Image = Image.FromStream(ms);
@@ -79,7 +81,8 @@ namespace Teach.PL
             cd.Logo = img;
             cd.Subject = txtSubject.Text;
             db.SaveChanges();
-            Properties.Settings.Default.maxDegree = Convert.ToInt32(txtMaxDegree.Text);
+            Properties.Settings.Default.maxDegree = Convert.ToDouble(txtMaxDegree.Text);
+            Properties.Settings.Default.totalAttendance = Convert.ToInt32(txtTotal.Text);
             Properties.Settings.Default.Save();
             XtraMessageBox.Show("تم حفظ التعديلات بنجاح", "تعديل", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();

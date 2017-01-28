@@ -392,7 +392,7 @@ namespace Teach.PL
                     }
                 }
                 report.paramAttend.Value = attend;
-                report.paramTotal.Value = 14;
+                report.paramTotal.Value = Properties.Settings.Default.totalAttendance;
                 report.ShowPreview();
             }
             catch
@@ -435,7 +435,7 @@ namespace Teach.PL
                         }
                     }
                     report.paramAttend.Value = attend;
-                    report.paramTotal.Value = 14;
+                    report.paramTotal.Value = Properties.Settings.Default.totalAttendance;
                     report.CreateDocument();
                     report.Print(Properties.Settings.Default.Printer);
                 }
